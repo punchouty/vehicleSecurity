@@ -1,0 +1,11 @@
+    {
+                            "data": [{
+                            "fullName": "Rajan Punchouty",
+                            "email": "punchouty@gmail.com",                        
+                            "mobile": "9717744392",
+                            "gender": "male"
+                        }],
+                        "message": "EditProfile Successful",
+                        "success": true,
+                        "total": 1
+                    }

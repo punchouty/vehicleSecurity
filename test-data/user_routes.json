@@ -1,0 +1,25 @@
+{
+   "routes":[
+      {
+         "id":"1",
+         "name":"Route 1",
+         "start_time":"",
+         "vehicle_id":"1"
+      },
+      {
+         "id":"2",
+         "name":"Route 2",
+         "start_time":"",
+         "vehicle_id":"2"
+      },
+      {
+         "id":"3",
+         "name":"Route 3",
+         "start_time":"",
+         "vehicle_id":"3"
+      }
+   ],
+   "message":"Routes Loaded Successfully",
+   "success":true,
+   "total": 3
+}

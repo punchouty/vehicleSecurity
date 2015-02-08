@@ -1,0 +1,12 @@
+{
+    "data": {
+    	"id": "1",
+        "username": "shaktiman",
+        "email": "sample.user@racloop.com",        
+        "role": "user",
+        "school_id": "1"
+    },
+    "message": "",
+    "success": true,
+    "total": 0
+}

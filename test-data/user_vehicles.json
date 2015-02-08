@@ -1,0 +1,29 @@
+{  
+   "vehicles":[  
+      {  
+         "id":"1",
+         "registration_no":"Doe",
+         "capacity":"10",
+         "vehicle_type":"bus",
+         "school_id":"1"
+      },
+      {  
+         "id":"2",
+         "registration_no":"Smith",
+         "capacity":"12",
+         "vehicle_type":"bus",
+         "school_id":"1"
+      },
+      {  
+         "id":"3",
+         "registration_no":"Jones",
+         "capacity":"14",
+         "vehicle_type":"bus",
+         "school_id":"1"
+      }
+   ],
+   "message": "Vehicles Loaded Successfully",
+    "success": true,
+    "total": 3
+}
+
