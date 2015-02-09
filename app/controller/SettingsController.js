@@ -45,10 +45,7 @@ Ext.define('GpsTracker.controller.SettingsController', {
             },
             startStopRecordingButton: {
                 tap: 'onStartStopRecordingButtonTap'
-            },
-            navBackBtn: {
-                tap: 'onNavBackButtonTap'
-            },
+            },            
             routeTrackBtn: {
                 tap: 'onRouteTrackBtnTap'
             }, 

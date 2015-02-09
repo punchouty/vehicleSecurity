@@ -13,7 +13,7 @@ Ext.define('GpsTracker.util.Config', {
         },
         url: {},
         roles: ['superuser', 'admin', 'user'],
-        timePeriod: 5,          //mins      
+        timePeriod: 1,          //mins      
         intervalID: {}
     },
     constructor: function() {
