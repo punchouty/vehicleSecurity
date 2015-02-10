@@ -282,7 +282,8 @@ Ext.define('GpsTracker.controller.SettingsController', {
         button.setText("Stop Recording"); 
         button.pressed = true;
         var geo = Ext.create('Ext.util.Geolocation', {
-                autoUpdate: false,
+                autoUpdate: true, 
+                frequency: time,
                 allowHighAccuracy : true,
                 listeners: {
                     locationupdate: function(geo) {   
@@ -304,10 +305,10 @@ Ext.define('GpsTracker.controller.SettingsController', {
              }); 
        
           console.log("time is  "+ time);
-          geo.updateLocation();
-          GpsTracker.util.Config.intervalID.stopIntervalID = setInterval(function(){ 
-            geo.updateLocation();
-          }, parseInt(time));        
+          // geo.updateLocation();
+          // GpsTracker.util.Config.intervalID.stopIntervalID = setInterval(function(){ 
+          //   geo.updateLocation();
+          // }, parseInt(time));        
            
        }
     },createStops: function(stop) {        
@@ -389,7 +390,8 @@ Ext.define('GpsTracker.controller.SettingsController', {
         button.setText("Stop"); 
         button.pressed = true;
         var geo = Ext.create('Ext.util.Geolocation', {
-                autoUpdate: false,
+                autoUpdate: true, 
+                frequency: time,
                 allowHighAccuracy : true,
                 listeners: {
                     locationupdate: function(geo) { 
@@ -417,10 +419,10 @@ Ext.define('GpsTracker.controller.SettingsController', {
                 }
              }); 
        
-          geo.updateLocation();
-          GpsTracker.util.Config.intervalID.trackIntervalID = setInterval(function(){ 
-            geo.updateLocation();
-          }, parseInt(time));        
+          // geo.updateLocation();
+          // GpsTracker.util.Config.intervalID.trackIntervalID = setInterval(function(){ 
+          //   geo.updateLocation();
+          // }, parseInt(time));        
            
        }
     },createTracks: function(track) {        
