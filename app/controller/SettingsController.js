@@ -296,9 +296,9 @@ Ext.define('GpsTracker.controller.SettingsController', {
                     },
                     locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
                         if(bTimeout){
-                            alert('Timeout occurred.');
+                            Ext.toast('Timeout occurred.',500);
                         } else {
-                            alert('Error occurred.');
+                            Ext.toast('Error occurred.', 500);
                         }
                     }
                 }
