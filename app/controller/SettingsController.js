@@ -273,15 +273,17 @@ Ext.define('GpsTracker.controller.SettingsController', {
         var currentDate = new Date();
         var format = 'Y-m-d H:i:s';
         var me =this;
-        // var intervalID = GpsTracker.util.Config.intervalID.stopIntervalID; 
+        var geo = GpsTracker.util.Config.stopIntervalID; 
        if(button.pressed){
             button.setText("Start Recording"); 
             button.pressed = false; 
-            clearInterval(GpsTracker.util.Config.intervalID.stopIntervalID);              
+            // clearInterval(GpsTracker.util.Config.intervalID.stopIntervalID);   
+            console.log(geo);     
+            geo.setAutoUpdate(false);
        }else{
         button.setText("Stop Recording"); 
         button.pressed = true;
-        var geo = Ext.create('Ext.util.Geolocation', {
+         geo = Ext.create('Ext.util.Geolocation', {
                 autoUpdate: true, 
                 frequency: time,
                 allowHighAccuracy : true,
@@ -303,7 +305,9 @@ Ext.define('GpsTracker.controller.SettingsController', {
                     }
                 }
              }); 
-       
+            setTimeout(function(){
+              GpsTracker.util.Config.stopIntervalID = geo;
+            }, 200);
           console.log("time is  "+ time);
           // geo.updateLocation();
           // GpsTracker.util.Config.intervalID.stopIntervalID = setInterval(function(){ 
@@ -350,20 +354,33 @@ Ext.define('GpsTracker.controller.SettingsController', {
 
     },
    backButtonHandler: function(button){
-    var routePanel =this.getRoutePanel();
-    if(routePanel) {
-     var recordingBtn = routePanel.down("#startStopRecordingBtn");
-     if(recordingBtn.pressed){        
-            clearInterval(GpsTracker.util.Config.intervalID.stopIntervalID);              
-     }
+   //  var routePanel =this.getRoutePanel();
+   //  if(routePanel) {
+   //   var recordingBtn = routePanel.down("#startStopRecordingBtn");
+   //   if(recordingBtn.pressed){        
+   //          clearInterval(GpsTracker.util.Config.intervalID.stopIntervalID);              
+   //   }
+   // }
+
+   var isEmpty = function(obj){
+    return (Object.getOwnPropertyNames(obj).length === 0);
+   };
+
+   if(!isEmpty(GpsTracker.util.Config.stopIntervalID)){
+        GpsTracker.util.Config.stopIntervalID.setAutoUpdate(false);
    }
+   if (!isEmpty(GpsTracker.util.Config.trackIntervalID)){
+        GpsTracker.util.Config.stopIntervalID.setAutoUpdate(false); 
+   }
+
+
 },onRouteTrackBtnTap: function(button, e, eOpts) {
     var form = button.up('formpanel'), // Login form
             values = form.getValues();
     var timePeriod = GpsTracker.util.Config.timePeriod; 
         var time = (parseInt(timePeriod) * 60 * 1000);  
         var me =this;
-        // var intervalID = GpsTracker.util.Config.intervalID.stopIntervalID; 
+        var geo = GpsTracker.util.Config.trackIntervalID; 
 
         var currentDate = new Date();
         var format = 'Y-m-d H:i:s';
@@ -382,14 +399,17 @@ Ext.define('GpsTracker.controller.SettingsController', {
 
         // var uuid = guid();
 
+
        if(button.pressed){
             button.setText("Start"); 
             button.pressed = false; 
-            clearInterval(GpsTracker.util.Config.intervalID.trackIntervalID);              
+            // clearInterval(GpsTracker.util.Config.intervalID.trackIntervalID);
+            console.log(geo);     
+            geo.setAutoUpdate(false);             
        }else{
         button.setText("Stop"); 
         button.pressed = true;
-        var geo = Ext.create('Ext.util.Geolocation', {
+         geo = Ext.create('Ext.util.Geolocation', {
                 autoUpdate: true, 
                 frequency: time,
                 allowHighAccuracy : true,
@@ -418,7 +438,9 @@ Ext.define('GpsTracker.controller.SettingsController', {
                     }
                 }
              }); 
-       
+           setTimeout(function(){
+             GpsTracker.util.Config.trackIntervalID = geo;
+           }, 200);
           // geo.updateLocation();
           // GpsTracker.util.Config.intervalID.trackIntervalID = setInterval(function(){ 
           //   geo.updateLocation();

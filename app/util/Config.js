@@ -14,7 +14,8 @@ Ext.define('GpsTracker.util.Config', {
         url: {},
         roles: ['superuser', 'admin', 'user'],
         timePeriod: 1,          //mins      
-        intervalID: {}
+        stopIntervalID: {},
+        trackIntervalID: {}
     },
     constructor: function() {
         if (this.config.env == null) {
