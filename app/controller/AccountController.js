@@ -186,8 +186,16 @@ Ext.define('GpsTracker.controller.AccountController', {
             console.log('Logout success during launch : ' + response.responseText);
             if (data.success) {  
                 LoginHelper.removeUser();
-                clearInterval(GpsTracker.util.Config.intervalID.trackIntervalID);
-                clearInterval(GpsTracker.util.Config.intervalID.stopIntervalID);                        
+                var isEmpty = function(obj){
+                    return (Object.getOwnPropertyNames(obj).length === 0);
+                };
+
+                if(!isEmpty(GpsTracker.util.Config.stopIntervalID)){
+                    GpsTracker.util.Config.stopIntervalID.setAutoUpdate(false);
+                }
+                if (!isEmpty(GpsTracker.util.Config.trackIntervalID)){
+                    GpsTracker.util.Config.stopIntervalID.setAutoUpdate(false); 
+                }                        
                 Ext.Viewport.unmask();
                 Ext.Viewport.removeAll(true, true);
                 Ext.Viewport.add(Ext.create('GpsTracker.view.MainNavigationView'));
