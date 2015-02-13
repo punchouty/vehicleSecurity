@@ -200,7 +200,7 @@ Ext.define('GpsTracker.controller.SettingsController', {
 
         // Failure
         var failureCallback = function(response, ops) {
-            Ext.toast("Device Failure", 500);
+            Ext.toast("Device Failure", 3000);
             Ext.Viewport.unmask();
 
         };
@@ -298,9 +298,9 @@ Ext.define('GpsTracker.controller.SettingsController', {
                     },
                     locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
                         if(bTimeout){
-                            Ext.toast('Timeout occurred.',500);
+                            Ext.toast('Timeout occurred.',3000);
                         } else {
-                            Ext.toast('Error occurred.', 500);
+                            Ext.toast('Error occurred.', 3000);
                         }
                     }
                 }
@@ -322,10 +322,10 @@ Ext.define('GpsTracker.controller.SettingsController', {
             if (data.success) {  
                 Ext.Viewport.unmask();                 
                 // var routePanel = me.getRoutePanel;
-                Ext.toast(data.message, 500);  
+                Ext.toast(data.message, 3000);  
             } else {
                 Ext.Viewport.unmask();
-                Ext.toast(data.message, 500); 
+                Ext.toast(data.message, 3000); 
             }
         };
 
@@ -431,9 +431,9 @@ Ext.define('GpsTracker.controller.SettingsController', {
                     },
                     locationerror: function(geo, bTimeout, bPermissionDenied, bLocationUnavailable, message) {
                         if(bTimeout){
-                            Ext.toast('Timeout occurred.', 500);
+                            Ext.toast('Timeout occurred.', 3000);
                         } else {
-                            Ext.toast('Error occurred.', 500);
+                            Ext.toast('Error occurred.', 3000);
                         }
                     }
                 }
@@ -454,16 +454,16 @@ Ext.define('GpsTracker.controller.SettingsController', {
             if (data.success) {  
                 Ext.Viewport.unmask();                 
                 // var routePanel = me.getRoutePanel;
-                Ext.toast(data.message, 500);  
+                Ext.toast(data.message, 3000);  
             } else {
                 Ext.Viewport.unmask();
-                Ext.toast(data.message, 500); 
+                Ext.toast(data.message, 3000); 
             }
         };
 
         // Failure
         var failureCallback = function(response, ops) {
-            Ext.toast("Track Failure", 500); 
+            Ext.toast("Track Failure", 3000); 
             Ext.Viewport.unmask();
 
         };

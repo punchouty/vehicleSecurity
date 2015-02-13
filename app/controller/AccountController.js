@@ -103,15 +103,15 @@ Ext.define('GpsTracker.controller.AccountController', {
                 // Ext.getStore('journeyStore').load();
                 Ext.Viewport.unmask();
             } else {
-                Ext.toast(data.message, 3000);  
-                //Ext.Msg.alert("Login Failure", data.message);
+                // Ext.toast(data.message, 3000);  
+                Ext.Msg.alert("Login Failure", data.message);
                 Ext.Viewport.unmask();
             }
         };
         // Failure
         var failureCallback = function(response, ops) {
-             Ext.toast(data.message, 3000);
-            //Ext.Msg.alert("Login Failure", response.message);
+             // Ext.toast(data.message, 3000);
+            Ext.Msg.alert("Login Failure", response.message);
             Ext.Viewport.unmask();
 
         };
@@ -120,8 +120,8 @@ Ext.define('GpsTracker.controller.AccountController', {
         var validationObj = user.validate();
         if (!validationObj.isValid()) {
             var errorString = this.handleValidation(validationObj);
-             Ext.toast(errorString, 3000);
-            //Ext.Msg.alert("Oops", errorString);
+             // Ext.toast(errorString, 3000);
+            Ext.Msg.alert("Oops", errorString);
         } else {
             Ext.Viewport.mask({
                 xtype: 'loadmask',
@@ -201,8 +201,8 @@ Ext.define('GpsTracker.controller.AccountController', {
                 Ext.Viewport.add(Ext.create('GpsTracker.view.MainNavigationView'));
 
             } else {
-                Ext.toast(data.message, 3000);
-                //Ext.Msg.alert("Logout Failure", data.message);
+                // Ext.toast(data.message, 3000);
+                Ext.Msg.alert("Logout Failure", data.message);
                 Ext.Viewport.unmask();
             }
         };
@@ -248,9 +248,9 @@ Ext.define('GpsTracker.controller.AccountController', {
                 LoginHelper.removeUser();
                 Ext.Viewport.removeAll(true);
                 mainNavigationView = Ext.create('GpsTracker.view.MainNavigationView');
-                Ext.toast(data.message, 3000);
+                // Ext.toast(data.message, 3000);
                  // Main view
-                //Ext.Msg.alert(data.message);
+                Ext.Msg.alert(data.message);
                 // Navigate to login
                 mainNavigationView.push({
                     itemId: 'loginForm',
@@ -279,8 +279,8 @@ Ext.define('GpsTracker.controller.AccountController', {
         if (!validationObj.isValid()) {
             var errorString = this.handleForgotPasswordValidation(validationObj);           
             console.log(errorString);
-            Ext.toast(errorString, 3000);
-            //Ext.Msg.alert("Oops", errorString);
+            // Ext.toast(errorString, 3000);
+            Ext.Msg.alert("Oops", errorString);
         } else {
             Ext.Viewport.mask({
                 xtype: 'loadmask',
@@ -405,8 +405,8 @@ Ext.define('GpsTracker.controller.AccountController', {
                    // me.setCurrentLoc();
                     Ext.Viewport.unmask();
                 } else {
-                     Ext.toast("Oops "+data.message, 3000);  
-                    //Ext.Msg.alert("Login Failure", data.message);
+                     // Ext.toast("Oops "+data.message, 3000);  
+                    Ext.Msg.alert("Login Failure", data.message);
                     Ext.Viewport.unmask();
                 }
             };
@@ -435,5 +435,22 @@ Ext.define('GpsTracker.controller.AccountController', {
             });
 
         }
+
+
+     if (Ext.os.is('Android')) {
+         document.addEventListener("backbutton", Ext.bind(onBackKeyDown, this), false); // add back button listener
+
+         function onBackKeyDown(eve) {
+             eve.preventDefault();
+             Ext.Msg.confirm("Exit", "Are you sure you?", function(answer) {
+                 if (answer == 'yes') {
+                     navigator.app.exitApp();
+                 } else {
+                     //do nothing
+                 }
+             });
+         }
+     }
+        
     }
 });
