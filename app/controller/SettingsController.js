@@ -374,31 +374,32 @@ Ext.define('GpsTracker.controller.SettingsController', {
    }
 
 
-},onRouteTrackBtnTap: function(button, e, eOpts) {
+},guid: function() {
+      function s4() {
+        return Math.floor((1 + Math.random()) * 0x10000)
+                   .toString(16)
+                   .substring(1);
+      }
+      // return function() {
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+               s4() + '-' + s4() + s4() + s4();
+      // };
+    },
+onRouteTrackBtnTap: function(button, e, eOpts) {
     var form = button.up('formpanel'), // Login form
             values = form.getValues();
     var timePeriod = GpsTracker.util.Config.timePeriod; 
         var time = (parseInt(timePeriod) * 60 * 1000);  
         var me =this;
         var geo = GpsTracker.util.Config.trackIntervalID; 
-
+        var uuid = me.guid();
         var currentDate = new Date();
         var format = 'Y-m-d H:i:s';
 
-        var guid = (function() {
-          function s4() {
-            return Math.floor((1 + Math.random()) * 0x10000)
-                       .toString(16)
-                       .substring(1);
-          }
-          return function() {
-            return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-                   s4() + '-' + s4() + s4() + s4();
-          };
-        })();
+        
 
         // var uuid = guid();
-
+        console.log("----------"+uuid)
 
        if(button.pressed){
             button.setText("Start"); 
@@ -419,7 +420,7 @@ Ext.define('GpsTracker.controller.SettingsController', {
                         track = {};
                         track.latitude = geo.getLatitude();
                         track.longitude = geo.getLongitude();
-                        track.sessionid = guid();  
+                        track.sessionid = uuid;  
                         track.gpstime = Ext.Date.format(currentDate,format);
                         track.route_id = values.route_id;
                         track.accuracy = geo.getAccuracy();

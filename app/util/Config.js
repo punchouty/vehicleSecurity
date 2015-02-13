@@ -4,7 +4,7 @@ Ext.define('GpsTracker.util.Config', {
     alternateClassName: ['Config'],
 
     config: {
-        env: 'prod',
+        env: 'dev',
         app: {
             messageText: 'My message text.'
         },
