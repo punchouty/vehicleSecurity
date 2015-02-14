@@ -269,7 +269,7 @@ Ext.define('GpsTracker.controller.SettingsController', {
     },
     onStartStopRecordingButtonTap: function(button, e, eOpts) {
         var timePeriod = GpsTracker.util.Config.timePeriod; 
-        var time = (parseInt(timePeriod) * 60 * 1000);  
+        var time = (timePeriod * 60 * 1000);  
         var currentDate = new Date();
         var format = 'Y-m-d H:i:s';
         var me =this;
@@ -389,7 +389,7 @@ onRouteTrackBtnTap: function(button, e, eOpts) {
     var form = button.up('formpanel'), // Login form
             values = form.getValues();
     var timePeriod = GpsTracker.util.Config.timePeriod; 
-        var time = (parseInt(timePeriod) * 60 * 1000);  
+        var time = (timePeriod * 60 * 1000);  
         var me =this;
         var geo = GpsTracker.util.Config.trackIntervalID; 
         var uuid = me.guid();
